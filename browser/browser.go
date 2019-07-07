@@ -44,21 +44,22 @@ func getSumOfTransitFines(domain, captcha string) string {
 
 func TransitFines(domain string) string {
 	var resChan = make(chan string)
-	defer close(resChan)
 	var sumOfFines string
+	var finished bool
 	for _, captcha := range captchas {
-		go func() {
+		go func(captcha string) {
 			var res string
 			// retry three times with the same captcha
-			for i := 0; i < 3 && res == ""; i++ {
+			for i := 0; i < 3 && res == "" && !finished; i++ {
 				res = getSumOfTransitFines(domain, captcha)
 			}
 			resChan <- res
-		}()
+		}(captcha)
 	}
 	for i := 0; i < len(captchas) && sumOfFines == ""; i++ {
 		sumOfFines = <-resChan
 	}
+	finished = true
 	return sumOfFines
 }
 

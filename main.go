@@ -12,7 +12,7 @@ import (
 
 func main() {
 	pb := NewBot()
-	var token = os.Getenv("TELEGRAMTOKEN")
+	var token = os.Getenv("TELEGRAMFINESTOKEN")
 	bot, err := tgbotapi.NewBotAPI(token)
 
 	if err != nil {
@@ -77,6 +77,6 @@ func (b *Bot) handleCommand(message *tgbotapi.Message) *tgbotapi.MessageConfig {
 func loadHandlers() map[string]func(message *tgbotapi.Message) string {
 	ch := commands.New()
 	return map[string]func(message *tgbotapi.Message) string{
-		"fines": ch.TransitFines,
+		"multas": ch.TransitFines,
 	}
 }

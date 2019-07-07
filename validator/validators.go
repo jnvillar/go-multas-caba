@@ -12,12 +12,29 @@ func Length(msg string) (bool, error) {
 	return true, nil
 }
 
-func MinLength(msg string, min int) (bool, error) {
+func MaxLength(msg string, max int) error {
+	validation := len(msg) > max
+	if validation {
+		return errors.New("Mensaje muy largo")
+	}
+	return nil
+}
+
+func MinLength(msg string, min int) error {
 	validation := len(msg) < min
 	if validation {
-		return false, errors.New("Mensaje muy corto")
+		return errors.New("Mensaje muy corto")
 	}
-	return true, nil
+	return nil
+}
+
+func CheckErrors(errors []error) error {
+	for _, err := range errors{
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 func LengthOfParameters(params []string) (bool, error) {
