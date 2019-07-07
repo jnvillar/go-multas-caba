@@ -5,8 +5,8 @@ import (
 	"strings"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
-	"multas_caba/browser"
-	"multas_caba/validator"
+	"go-multas-caba/browser"
+	"go-multas-caba/validator"
 )
 
 type CommandHandler struct {

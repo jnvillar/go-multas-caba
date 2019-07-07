@@ -4,8 +4,8 @@ import (
 	"log"
 	"os"
 
-	"multas_caba/commands"
-	"multas_caba/validator"
+	"go-multas-caba/commands"
+	"go-multas-caba/validator"
 
 	"github.com/go-telegram-bot-api/telegram-bot-api"
 )

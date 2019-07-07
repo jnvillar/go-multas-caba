@@ -1,1 +1,1 @@
-web: bin/multas_caba
+web: bin/go-multas-caba
